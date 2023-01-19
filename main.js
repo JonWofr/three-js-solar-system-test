@@ -1,4 +1,13 @@
 import * as THREE from 'three';
+import moonImageUrl from './assets/images/moon.jpg';
+import earthImageUrl from './assets/images/earth.jpeg';
+import sunImageUrl from './assets/images/sun.jpeg';
+import skyBoxRightImageUrl from './assets/images/right.png';
+import skyBoxLeftImageUrl from './assets/images/left.png';
+import skyBoxTopImageUrl from './assets/images/top.png';
+import skyBoxBottomImageUrl from './assets/images/bottom.png';
+import skyBoxFrontImageUrl from './assets/images/front.png';
+import skyBoxBackImageUrl from './assets/images/back.png';
 
 // Scene
 const scene = new THREE.Scene();
@@ -44,7 +53,7 @@ function addStar() {
 new Array(200).fill().forEach(addStar);
 
 // Moon
-const moonTexture = new THREE.TextureLoader().load('/assets/images/moon.jpg');
+const moonTexture = new THREE.TextureLoader().load(moonImageUrl);
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(1, 32, 32),
   new THREE.MeshStandardMaterial({ map: moonTexture })
@@ -52,9 +61,7 @@ const moon = new THREE.Mesh(
 scene.add(moon);
 
 // Earth
-const earthTexture = new THREE.TextureLoader().load(
-  '/assets/images/earth.jpeg'
-);
+const earthTexture = new THREE.TextureLoader().load(earthImageUrl);
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({ map: earthTexture })
@@ -62,7 +69,7 @@ const earth = new THREE.Mesh(
 scene.add(earth);
 
 // Sun
-const sunTexture = new THREE.TextureLoader().load('/assets/images/sun.jpeg');
+const sunTexture = new THREE.TextureLoader().load(sunImageUrl);
 const sun = new THREE.Mesh(
   new THREE.SphereGeometry(5, 32, 32),
   new THREE.MeshStandardMaterial({
@@ -74,12 +81,12 @@ scene.add(sun);
 
 // Sky box
 const backgroundTexture = new THREE.CubeTextureLoader().load([
-  '/assets/images/right.png',
-  '/assets/images/left.png',
-  '/assets/images/top.png',
-  '/assets/images/bottom.png',
-  '/assets/images/front.png',
-  '/assets/images/back.png',
+  skyBoxRightImageUrl,
+  skyBoxLeftImageUrl,
+  skyBoxTopImageUrl,
+  skyBoxBottomImageUrl,
+  skyBoxFrontImageUrl,
+  skyBoxBackImageUrl,
 ]);
 scene.background = backgroundTexture;
 
