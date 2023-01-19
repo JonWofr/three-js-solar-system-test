@@ -44,7 +44,7 @@ function addStar() {
 new Array(200).fill().forEach(addStar);
 
 // Moon
-const moonTexture = new THREE.TextureLoader().load('/moon.jpg');
+const moonTexture = new THREE.TextureLoader().load('/assets/images/moon.jpg');
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(1, 32, 32),
   new THREE.MeshStandardMaterial({ map: moonTexture })
@@ -52,7 +52,9 @@ const moon = new THREE.Mesh(
 scene.add(moon);
 
 // Earth
-const earthTexture = new THREE.TextureLoader().load('/earth.jpeg');
+const earthTexture = new THREE.TextureLoader().load(
+  '/assets/images/earth.jpeg'
+);
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({ map: earthTexture })
@@ -60,7 +62,7 @@ const earth = new THREE.Mesh(
 scene.add(earth);
 
 // Sun
-const sunTexture = new THREE.TextureLoader().load('/sun.jpeg');
+const sunTexture = new THREE.TextureLoader().load('/assets/images/sun.jpeg');
 const sun = new THREE.Mesh(
   new THREE.SphereGeometry(5, 32, 32),
   new THREE.MeshStandardMaterial({
@@ -70,17 +72,20 @@ const sun = new THREE.Mesh(
 );
 scene.add(sun);
 
+// Sky box
 const backgroundTexture = new THREE.CubeTextureLoader().load([
-  '/right.png',
-  '/left.png',
-  '/top.png',
-  '/bottom.png',
-  '/front.png',
-  '/back.png',
+  '/assets/images/right.png',
+  '/assets/images/left.png',
+  '/assets/images/top.png',
+  '/assets/images/bottom.png',
+  '/assets/images/front.png',
+  '/assets/images/back.png',
 ]);
 scene.background = backgroundTexture;
 
+// Game loop
 function render(time) {
+  // Time in seconds
   time *= 0.001;
 
   const earthOrbitAngle = ((time % 10) / 10) * Math.PI * 2;
